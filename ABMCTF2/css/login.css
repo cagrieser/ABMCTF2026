@@ -1,0 +1,429 @@
+/* =============================================
+   CCTV Login Page Stylesheet
+   Dark surveillance theme with scan line effects
+   ============================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    color: #00ff88;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Scanline overlay effect */
+.scanline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 136, 0.015) 2px,
+        rgba(0, 255, 136, 0.015) 4px
+    );
+}
+
+.scanline-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 0, 0, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanMove 8s linear infinite;
+}
+
+@keyframes scanMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100px); }
+}
+
+/* Static noise effect */
+.static-noise {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: noiseShift 0.5s steps(5) infinite;
+}
+
+@keyframes noiseShift {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-5%, 5%); }
+    40% { transform: translate(5%, -5%); }
+    60% { transform: translate(-3%, 3%); }
+    80% { transform: translate(3%, -3%); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Login container */
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+}
+
+/* Camera frame styling */
+.camera-frame {
+    background: rgba(10, 15, 10, 0.95);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 136, 0.05),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Corner decorations */
+.frame-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #00ff88;
+    border-style: solid;
+    border-width: 0;
+}
+
+.frame-corner.top-left {
+    top: -1px;
+    left: -1px;
+    border-top-width: 3px;
+    border-left-width: 3px;
+}
+
+.frame-corner.top-right {
+    top: -1px;
+    right: -1px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+}
+
+.frame-corner.bottom-left {
+    bottom: -1px;
+    left: -1px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.frame-corner.bottom-right {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 3px;
+    border-right-width: 3px;
+}
+
+/* System header */
+.system-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.rec-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #ff3333;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.rec-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ff3333;
+    border-radius: 50%;
+    animation: recBlink 1s ease-in-out infinite;
+}
+
+@keyframes recBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+.system-time {
+    font-size: 13px;
+    color: rgba(0, 255, 136, 0.7);
+    letter-spacing: 1px;
+}
+
+/* Login content */
+.login-content {
+    text-align: center;
+}
+
+.camera-icon {
+    margin-bottom: 20px;
+    animation: iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.login-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: #00ff88;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.login-subtitle {
+    font-size: 11px;
+    color: rgba(0, 255, 136, 0.4);
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+/* MAC Address display */
+.mac-display {
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 3px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mac-label {
+    font-size: 10px;
+    color: rgba(0, 255, 136, 0.5);
+    letter-spacing: 2px;
+}
+
+.mac-value {
+    font-size: 16px;
+    color: #00ff88;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+/* Login form */
+.login-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 10px;
+    color: rgba(0, 255, 136, 0.5);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    background: rgba(0, 255, 136, 0.03);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: 3px;
+    padding: 14px 16px;
+    color: #00ff88;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(0, 255, 136, 0.15);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.input-group input:focus {
+    border-color: rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.06);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ff88;
+    transition: width 0.3s ease;
+}
+
+.input-group input:focus ~ .input-line {
+    width: 100%;
+}
+
+/* Error message */
+.error-msg {
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    color: #ff5555;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: errorShake 0.5s ease;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+.error-icon {
+    font-size: 16px;
+}
+
+/* Login button */
+.login-btn {
+    width: 100%;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+    padding: 14px;
+    border-radius: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-btn:hover {
+    background: rgba(0, 255, 136, 0.15);
+    border-color: rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+/* System footer */
+.system-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.footer-item {
+    font-size: 10px;
+    color: rgba(0, 255, 136, 0.3);
+    letter-spacing: 1px;
+}
+
+.status-online {
+    color: #00ff88;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+    .login-container {
+        padding: 10px;
+    }
+    .camera-frame {
+        padding: 20px;
+    }
+    .login-title {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    .mac-display {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    .system-footer {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+}

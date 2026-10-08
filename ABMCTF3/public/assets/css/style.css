@@ -1,0 +1,526 @@
+:root {
+    --bg-main: #f3f2f1;
+    --bg-panel: #ffffff;
+    --bg-panel-hover: #f3f2f1;
+    --bg-panel-active: #e1dfdd;
+    --text-primary: #201f1e;
+    --text-secondary: #605e5c;
+    --accent: #0f6cbd;
+    --accent-hover: #115ea3;
+    --accent-light: #e8f4fd;
+    --danger: #d13438;
+    --danger-light: #fdf3f4;
+    --border: #e1dfdd;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-size: 14px;
+}
+
+/* Login Page */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f6cbd 0%, #004578 100%);
+}
+
+.login-container {
+    background: var(--bg-panel);
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: var(--shadow-lg);
+}
+
+.logo-box {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.flight-icon {
+    width: 54px;
+    height: 54px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.logo-box h1 {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.logo-box p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.error-box {
+    background: var(--danger-light);
+    color: var(--danger);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    border: 1px solid rgba(209, 52, 56, 0.2);
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(15, 108, 189, 0.2);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+}
+
+/* Inbox App */
+.app-body {
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--bg-main);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+}
+
+.brand h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav-menu {
+    flex: 1;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.nav-text {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.nav-count {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--bg-panel-hover);
+    color: var(--text-secondary);
+    display: none;
+}
+
+.nav-count.has-unread {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+}
+
+.nav-count.has-total {
+    display: inline-block;
+}
+
+.nav-menu a:hover {
+    background: var(--bg-panel-hover);
+}
+
+.nav-menu a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.user-profile {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    font-size: 13px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info .name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.user-info .role {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.logout-btn {
+    margin-left: auto;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    background: var(--bg-panel);
+}
+
+.mail-list-panel {
+    width: 360px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-panel);
+}
+
+.panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-panel);
+    z-index: 10;
+}
+
+.panel-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--bg-main);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--text-primary);
+    margin-top: 12px;
+    font-size: 13px;
+    transition: border 0.2s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--bg-panel);
+}
+
+.mail-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.mail-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.1s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mail-item.unread {
+    background: #f8fbff;
+}
+
+.mail-item.unread .mail-sender {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.mail-item.unread .mail-subject {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.mail-item:hover {
+    background: var(--bg-panel-hover);
+}
+
+.mail-item.active {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding-left: 17px;
+}
+
+.mail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mail-sender {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}
+
+.mail-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.mail-subject {
+    font-size: 13px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.mail-preview {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mail-item.recalled {
+    opacity: 0.7;
+    background: var(--danger-light);
+}
+
+.mail-item.recalled .mail-subject {
+    color: var(--danger);
+    font-style: italic;
+}
+
+@keyframes flashNew {
+    0% { background-color: var(--accent-light); transform: scale(0.98); }
+    50% { background-color: #d1e8ff; transform: scale(1.02); }
+    100% { background-color: #f8fbff; transform: scale(1); }
+}
+
+.mail-item.new-arrival {
+    animation: flashNew 0.8s ease-out forwards;
+}
+
+.mail-view-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-panel);
+}
+
+.mail-content {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+}
+
+.empty-state {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.mail-view-header {
+    margin-bottom: 24px;
+}
+
+.mail-view-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.mail-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--bg-main);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.mail-meta .avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+}
+
+.meta-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.meta-row {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.meta-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    width: 40px;
+}
+
+.meta-value {
+    color: var(--text-primary);
+}
+
+.meta-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.mail-body {
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 14px;
+    padding-top: 24px;
+}
+
+.signature {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+}
+
+.recalled-warning {
+    background: var(--danger-light);
+    border: 1px solid rgba(209, 52, 56, 0.2);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: var(--danger);
+    margin-top: 20px;
+}
+
+.recalled-warning h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
